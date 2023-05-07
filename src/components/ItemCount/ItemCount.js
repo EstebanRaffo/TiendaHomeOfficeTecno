@@ -8,7 +8,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Tooltip from '@mui/material/Tooltip';
 
-export default function ItemCount({stock}) {
+export default function ItemCount({stock, initial}) {
     const [count, setCount] = React.useState(1);
     let isDisabled = count === stock
 
@@ -36,7 +36,7 @@ export default function ItemCount({stock}) {
                     <Button
                         aria-label="reduce"
                         onClick={() => {
-                            setCount(Math.max(count - 1, 0));
+                            setCount(Math.max(count - 1, initial));
                         }}
                     >
                         <RemoveIcon fontSize="small" />
