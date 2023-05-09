@@ -1,10 +1,11 @@
+import Flex from '../Flex/Flex'
 import Item from '../Item/Item'
 
 const ItemList = ({products}) => {
     return(
-        <div>
+        <Flex>
             {products.map(product => <Item key={product.id} {...product} />)}
-        </div>
+        </Flex>
     )
 }
 

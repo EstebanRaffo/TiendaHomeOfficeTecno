@@ -4,45 +4,44 @@ import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
-import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Divider from '@mui/material/Divider';
+import Button from '@mui/material/Button';
+
 
 
 export default function Item({id, title, img, price, stock}) {
-
-    console.log(id, title, img, price, stock)
 
   return (
     <Card sx={{ maxWidth: 300 }}>
       <CardHeader
         action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
+          <CardActions disableSpacing>
+            <IconButton aria-label="add to favorites">
+              <FavoriteIcon />
+            </IconButton>
+          </CardActions>
         }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        title={title}
       />
       <CardMedia
         component="img"
-        height="150"
-        image="/static/images/cards/paella.jpg"
-        alt="Paella dish"
+        height="100"
+        image={img}
+        alt={title}
       />
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
+        <Typography variant="body1" color="text.secondary">
+          {price} 
         </Typography>
+        <Typography variant="subtitle1" color="text.secondary">
+          {stock} unidades
+        </Typography>
+        <Divider light />
+        <Button variant="contained">Ver Producto</Button>
       </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-      </CardActions>
     </Card>
   );
 }

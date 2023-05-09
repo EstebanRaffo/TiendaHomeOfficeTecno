@@ -1,6 +1,5 @@
 import ItemCount from '../ItemCount/ItemCount';
 import ItemList from "../ItemList/ItemList";
-import Flex from "../Flex/Flex"
 import { useEffect, useState } from "react";
 
 /* AsyncMock - servicioMock / backend/nube/api */
@@ -43,9 +42,7 @@ const ItemListContainer = ({ greeting }) => {
         <div style={styleList}>
             <h1>{greeting}</h1>
             <ItemCount stock={5} initial={0}/>
-            <Flex>
-                <ItemList products={products} />
-            </Flex>
+            <ItemList products={products} />
         </div>
     )
 } 

@@ -5,7 +5,7 @@
         "title": "Lettuce - Baby Salad Greens",
         "price": "Dounbare",
         "description": "Dounbare",
-        "stock": "Female"
+        "stock": 10
     },
     {
         "id": 2,
@@ -13,7 +13,7 @@
         "title": "Tomatoes - Roma",
         "price": "Bardey",
         "description": "Dounbare",
-        "stock": "Male"
+        "stock": 10
     },
     {
         "id": 3,
@@ -21,7 +21,7 @@
         "title": "Food Colouring - Orange",
         "price": "Pawnsford",
         "description": "Dounbare",
-        "stock": "Male"
+        "stock": 10
     },
     {
         "id": 4,
@@ -29,7 +29,7 @@
         "title": "Wine - Taylors Reserve",
         "price": "Drinkel",
         "description": "Dounbare",
-        "stock": "Female"
+        "stock": 10
     },
     {
         "id": 5,
@@ -37,7 +37,7 @@
         "title": "Scrubbie - Scotchbrite Hand Pad",
         "price": "Danieli",
         "description": "Dounbare",
-        "stock": "Genderfluid"
+        "stock": 10
     },
     {
         "id": 6,
@@ -45,6 +45,6 @@
         "title": "Wine - Chianti Classico Riserva",
         "price": "Cragg",
         "description": "Dounbare",
-        "stock": "Male"
+        "stock": 10
     }
 ]

@@ -35,7 +35,7 @@ export default function CartWidget() {
   return (
     <IconButton aria-label="cart">
       <StyledBadge badgeContent={1} color="primary">
-        <ShoppingCartIcon color='success'/>
+        <ShoppingCartIcon color='primary'/>
       </StyledBadge>
     </IconButton>
   );
