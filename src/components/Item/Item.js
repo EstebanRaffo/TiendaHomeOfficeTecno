@@ -10,12 +10,12 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
 
-
+import './styles/Item.css';
 
 export default function Item({id, title, img, price, stock}) {
 
   return (
-    <Card sx={{ maxWidth: 300 }}>
+    <Card sx={{ maxWidth: 300 }} className='ItemCard'>
       <CardHeader
         action={
           <CardActions disableSpacing>
