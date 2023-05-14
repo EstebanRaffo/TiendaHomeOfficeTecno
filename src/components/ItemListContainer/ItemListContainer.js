@@ -1,4 +1,3 @@
-import ItemCount from '../ItemCount/ItemCount';
 import ItemList from "../ItemList/ItemList";
 import { useEffect, useState } from "react";
 
@@ -7,7 +6,7 @@ import products from "../../data/MOCK_DATA.json";
 
 const getProducts = () => {
   return new Promise((resolve) => {
-    setTimeout(() => {
+    setTimeout(() => {  
       resolve(products);
     }, 2000);
   });
@@ -41,7 +40,6 @@ const ItemListContainer = ({ greeting }) => {
     return(
         <div style={styleList}>
             <h1>{greeting}</h1>
-            <ItemCount stock={5} initial={0}/>
             <ItemList products={products} />
         </div>
     )

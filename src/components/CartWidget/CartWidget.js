@@ -1,21 +1,3 @@
-// import cart from './assets/add-to-cart.png'
-// import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-// import Button from '@mui/material/Button';
-
-// const CartWidget = () => {
-
-//     const styles = {
-//         width: '70px'
-//     }
-
-//     return(
-//         <Button>
-//             <ShoppingCartIcon />
-//             0
-//         </Button>
-//     )
-// }
-
 import * as React from 'react';
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';

@@ -3,7 +3,7 @@ function Flex({ children }) {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "space-around",
-    padding: "10px",
+    padding: "2%",
   };
 
   return <div style={flexStyle}>{children}</div>;

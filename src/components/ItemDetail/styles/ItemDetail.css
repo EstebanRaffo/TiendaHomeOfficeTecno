@@ -1,0 +1,11 @@
+.ItemDetail{
+    display: flex;
+    margin: 2%;
+    padding: 2%;
+}
+
+
+.CardActions{
+    display: flex;
+    justify-content: right;
+}
