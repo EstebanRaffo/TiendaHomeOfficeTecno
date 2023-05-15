@@ -1,17 +1,15 @@
 import ItemCount from '../ItemCount/ItemCount';
-import {Card, CardMedia, Typography, Button, Divider, CardContent, CardActions, IconButton, Tooltip} from '@mui/material';
+import {Card, Typography, Button, Divider, CardContent, CardActions, IconButton, Tooltip} from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import "./styles/ItemDetail.css"
-// import Carousel from '../Carousel/Carousel';
+import Carousel from '../Carousel/Carousel';
 
 
 const ItemDetail = ({id, images, category, title, description, price, stock}) => {
   
-    console.log(images)
     return (
     <Card className="ItemDetail">
-        {/* <Carousel images={images} /> */}
-        <CardMedia component="img" height="100" image={images} alt={title} />
+        <Carousel images={images} />
         <CardContent>
             <CardActions className="CardActions">
                 <IconButton aria-label="add to favorites">
@@ -29,7 +27,7 @@ const ItemDetail = ({id, images, category, title, description, price, stock}) =>
             <Typography variant="subtitle1" color="text.secondary">
                 {`${stock} unidades disponibles`} 
             </Typography>
-            <ItemCount stock={5} initial={0}/>
+            <ItemCount stock={10} initial={0}/>
             <Divider light />
             <Button variant="contained">Comprar</Button>
         </CardContent>

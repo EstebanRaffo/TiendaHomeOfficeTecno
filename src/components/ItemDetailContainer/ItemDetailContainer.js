@@ -3,7 +3,7 @@ import ItemDetail from '../ItemDetail/ItemDetail';
 import './styles/ItemDetailContainer.css';
 
 /* AsyncMock - servicioMock / backend/nube/api */
-import products from "../../data/MOCK_DATA.json"
+import products from "../../data/data"
 
 const getProductById = (id) => {
     return new Promise((resolve) => {
@@ -15,7 +15,7 @@ const getProductById = (id) => {
 
 
 const ItemDetailContainer = () => {
-    const [product, setProduct] = useState({})
+    const [product, setProduct] = useState(null)
 
     useEffect(() => {
         getProductById(1)

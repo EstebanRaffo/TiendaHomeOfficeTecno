@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import { CardMedia } from '@mui/material';
 
+import './styles/Carousel.css'
 
 function ControlledCarousel({images}) {
   const [index, setIndex] = useState(0);
@@ -11,17 +12,11 @@ function ControlledCarousel({images}) {
   };
 
   return (
-    <Carousel activeIndex={index} onSelect={handleSelect}>
-        {images.map((img) => <Carousel.Item>
-                                <CardMedia component="img" height="100" image={img} alt={"title"} />
-
-                                {/* <img
-                                    className="d-block w-100"
-                                    src={img}
-                                    alt="First slide"
-                                /> */}
-                            </Carousel.Item>
-                    )}
+    <Carousel className="Carousel" activeIndex={index} onSelect={handleSelect}>
+        {images && images.map((img, index) => <Carousel.Item key={index}>
+                                                <CardMedia component="img" height="100" image={img} alt={"title"} />
+                                              </Carousel.Item>
+                            )}
     </Carousel>
   );
 }

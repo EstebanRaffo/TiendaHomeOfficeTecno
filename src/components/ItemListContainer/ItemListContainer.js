@@ -19,7 +19,6 @@ const ItemListContainer = ({ greeting }) => {
     const [products, setProducts] = useState([])
 
     const styleList = {
-        backgroundColor: "#E0ECEA",
         textAlign: "center",
         padding: "10px",
         color: "white",
