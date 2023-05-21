@@ -5,7 +5,7 @@ import "./styles/ItemDetail.css"
 import Carousel from '../Carousel/Carousel';
 
 
-const ItemDetail = ({id, images, category, title, description, price, stock}) => {
+const ItemDetail = ({images, category, title, description, price, stock}) => {
   
     return (
     <Card className="ItemDetail">
@@ -27,7 +27,7 @@ const ItemDetail = ({id, images, category, title, description, price, stock}) =>
             <Typography variant="subtitle1" color="text.secondary">
                 {`${stock} unidades disponibles`} 
             </Typography>
-            <ItemCount stock={10} initial={0}/>
+            <ItemCount stock={stock} initial={0}/>
             <Divider light />
             <Button variant="contained">Comprar</Button>
         </CardContent>

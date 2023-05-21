@@ -2,13 +2,14 @@ import ItemList from "../ItemList/ItemList";
 import { useEffect, useState } from "react";
 
 /* AsyncMock - servicioMock / backend/nube/api */
-import products from "../../data/MOCK_DATA.json";
+import products from "../../data/data";
+import { useParams } from "react-router-dom";
 
 const getProducts = () => {
   return new Promise((resolve) => {
     setTimeout(() => {  
       resolve(products);
-    }, 2000);
+    }, 1000);
   });
 }
 
@@ -17,24 +18,30 @@ const getProducts = () => {
 // eslint-disable-next-line react/prop-types
 const ItemListContainer = ({ greeting }) => {
     const [products, setProducts] = useState([])
+    const {categoryId} = useParams()
 
     const styleList = {
         textAlign: "center",
-        padding: "10px",
-        color: "white",
+        padding: "1%",
+        color: "#007bff",
         fontWeight: "700",
-        marginTop: "5",
+        marginTop: "2",
     };
 
     useEffect(() => {
         getProducts()
             .then(response => {
-                setProducts(response)
+                if(categoryId){
+                    const productsByCategory = response.filter(product => product.category === categoryId)
+                    setProducts(productsByCategory)
+                }else{
+                    setProducts(response)
+                }
             })
             .catch(error => {
                 console.error(error)
             })
-    }, [])
+    }, [categoryId])
 
     return(
         <div style={styleList}>

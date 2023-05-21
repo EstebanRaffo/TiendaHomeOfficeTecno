@@ -4,41 +4,44 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { NavLink } from "react-router-dom";
 
 
 const NavBar = () => {
+
+  const styles = {
+    paddingLeft: "2%",
+    paddingRight: "2%"
+  } 
   return(
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" style={styles}>
+      <NavLink to="/"><Navbar.Brand>Tienda Tecno&HomeOffice</Navbar.Brand></NavLink>
       <Container>
-        <Navbar.Brand href="#home">Tienda TecnoHomeOffice</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Notebooks</Nav.Link>
-            <Nav.Link href="#pricing">Tablets</Nav.Link>
+            <Nav.Link><NavLink to="/category/notebooks">Notebooks</NavLink></Nav.Link>
+            <Nav.Link><NavLink to="/category/tablets">Tablets</NavLink></Nav.Link>
             <NavDropdown title="HomeOffice" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Desktop</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Kits Home Office
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Standing Desk</NavDropdown.Item>
+              <NavDropdown.Item><NavLink to="/category/homeoffice">Home Office</NavLink></NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">Kits Home Office</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">
                 Separated link
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          {/* <Nav>
-            <Nav.Link href="#deets">More deets</Nav.Link>
+          <Nav>
+            <Nav.Link href="#deets">Mis compras</Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
-              Dank memes
+              Favoritos
             </Nav.Link>
-          </Nav> */}
+          </Nav>
         </Navbar.Collapse>
         <CartWidget/>
       </Container>
     </Navbar>
-    )
+  )
 };
 
 export default NavBar;

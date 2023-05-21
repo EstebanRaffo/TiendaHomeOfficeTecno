@@ -1,10 +1,11 @@
 import * as React from 'react';
 import {Card, CardHeader, CardMedia, Typography, Button, Divider, CardContent, CardActions, IconButton, Tooltip} from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Link } from "react-router-dom";
 
 import './styles/Item.css';
 
-export default function Item({title, images, price, stock}) {
+export default function Item({id, title, image, price}) {
 
   return (
     <Card sx={{ maxWidth: 300 }} className='ItemCard'>
@@ -22,7 +23,7 @@ export default function Item({title, images, price, stock}) {
       <CardMedia
         component="img"
         height="100"
-        image={images}
+        image={image}
         alt={title}
       />
       <CardContent>
@@ -30,11 +31,10 @@ export default function Item({title, images, price, stock}) {
         <Typography variant="body1" color="text.secondary">
           {`$ ${price}`} 
         </Typography>
-        <Typography variant="subtitle1" color="text.secondary">
-          {`${stock} unidades disponibles`}
-        </Typography>
         <Divider light />
-        <Button variant="contained">Ver Producto</Button>
+        <Link to={`/product/${id}`}>
+          <Button variant="contained">Ver Producto</Button>
+        </Link>
       </CardContent>
     </Card>
   );

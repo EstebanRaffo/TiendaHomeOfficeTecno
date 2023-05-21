@@ -4,7 +4,7 @@ import Item from '../Item/Item'
 const ItemList = ({products}) => {
     return(
         <Flex>
-            {products.map(product => <Item key={product.id} {...product} />)}
+            {products && products.map(product => <Item key={product.id} {...product} image={product.images[0]}/>)}
         </Flex>
     )
 }
