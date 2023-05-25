@@ -2,8 +2,8 @@
     display: flex;
     margin: 2%;
     padding: 2%;
+    align-items: center;
 }
-
 
 .CardActions{
     display: flex;

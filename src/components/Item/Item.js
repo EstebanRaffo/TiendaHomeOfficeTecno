@@ -22,12 +22,12 @@ export default function Item({id, title, image, price}) {
       />
       <CardMedia
         component="img"
-        height="100"
+        height="40%"
         image={image}
         alt={title}
       />
       <CardContent>
-        <Typography variant="h6">{title}</Typography>
+        <Typography variant="subtitle1">{title}</Typography>
         <Typography variant="body1" color="text.secondary">
           {`$ ${price}`} 
         </Typography>

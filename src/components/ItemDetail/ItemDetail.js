@@ -9,7 +9,7 @@ const ItemDetail = ({images, category, title, description, price, stock}) => {
   
     return (
     <Card className="ItemDetail">
-        <Carousel images={images} />
+        <Carousel images={images}/>
         <CardContent>
             <CardActions className="CardActions">
                 <IconButton aria-label="add to favorites">
