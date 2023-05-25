@@ -1,20 +1,18 @@
 import CartWidget from "../CartWidget/CartWidget";
-
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Form from 'react-bootstrap/Form';
+import SearchBar from "../SearchBar/SearchBar";
 import { Link, NavLink } from "react-router-dom";
+
+import {Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
 
 const NavBar = () => {
 
   const styles = {
-    padding: "1.5%",
+    padding: "1.3%",
     paddingRight: "3%",
     paddingLeft: "3%"
   } 
+
   return(
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" style={styles}>
       <NavLink className="navbar-brand" to="/">Tienda Tecno&HomeOffice</NavLink>
@@ -25,22 +23,15 @@ const NavBar = () => {
             <Nav.Link as={Link} to="/category/notebooks">Notebooks</Nav.Link>
             <Nav.Link as={Link} to="/category/tablets">Tablets</Nav.Link>
             <NavDropdown title="HomeOffice" id="collasible-nav-dropdown">
-              <NavDropdown.Item as={Link} to="/category/homeoffice">Home Office</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/category/homeoffice">Kits Home Office</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/category/homeoffice">HomeOffice</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/category/homeoffice">Kits HomeOffice</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item as={Link} to="/category/homeoffice">
                 Separated link
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Buscar productos..."
-              className="me-2"
-              aria-label="Search"
-            />
-          </Form>
+          <SearchBar/>
           <Nav>
             <Nav.Link href="#deets">Mis compras</Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
