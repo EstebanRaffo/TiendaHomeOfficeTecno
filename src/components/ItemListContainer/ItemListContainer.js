@@ -23,7 +23,7 @@ const ItemListContainer = ({ greeting }) => {
     const styleList = {
         textAlign: "center",
         padding: "1%",
-        color: "#007bff",
+        color: "#0070E7",
         fontWeight: "700",
         marginTop: "2",
     };

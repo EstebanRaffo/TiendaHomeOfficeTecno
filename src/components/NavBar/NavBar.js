@@ -4,33 +4,43 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { NavLink } from "react-router-dom";
+import Form from 'react-bootstrap/Form';
+import { Link, NavLink } from "react-router-dom";
 
 
 const NavBar = () => {
 
   const styles = {
-    paddingLeft: "2%",
-    paddingRight: "2%"
+    padding: "1.5%",
+    paddingRight: "3%",
+    paddingLeft: "3%"
   } 
   return(
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" style={styles}>
-      <NavLink to="/"><Navbar.Brand>Tienda Tecno&HomeOffice</Navbar.Brand></NavLink>
+      <NavLink className="navbar-brand" to="/">Tienda Tecno&HomeOffice</NavLink>
       <Container>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link><NavLink to="/category/notebooks">Notebooks</NavLink></Nav.Link>
-            <Nav.Link><NavLink to="/category/tablets">Tablets</NavLink></Nav.Link>
+            <Nav.Link as={Link} to="/category/notebooks">Notebooks</Nav.Link>
+            <Nav.Link as={Link} to="/category/tablets">Tablets</Nav.Link>
             <NavDropdown title="HomeOffice" id="collasible-nav-dropdown">
-              <NavDropdown.Item><NavLink to="/category/homeoffice">Home Office</NavLink></NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Kits Home Office</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/category/homeoffice">Home Office</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/category/homeoffice">Kits Home Office</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
+              <NavDropdown.Item as={Link} to="/category/homeoffice">
                 Separated link
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
+          <Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Buscar productos..."
+              className="me-2"
+              aria-label="Search"
+            />
+          </Form>
           <Nav>
             <Nav.Link href="#deets">Mis compras</Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
