@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import ItemCount from '../ItemCount/ItemCount';
-import {Card, Typography, Button, Divider, CardContent, CardActions, IconButton, Tooltip} from '@mui/material';
+import {Card, Typography, Button, CardContent, CardActions, IconButton, Tooltip} from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import "./styles/ItemDetail.css"
 import Carousel from '../Carousel/Carousel';
