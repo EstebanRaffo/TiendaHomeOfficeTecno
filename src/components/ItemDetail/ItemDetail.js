@@ -1,12 +1,22 @@
+import { useState } from 'react';
 import ItemCount from '../ItemCount/ItemCount';
 import {Card, Typography, Button, Divider, CardContent, CardActions, IconButton, Tooltip} from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import "./styles/ItemDetail.css"
 import Carousel from '../Carousel/Carousel';
+import { Link } from "react-router-dom";
 
 
 const ItemDetail = ({images, category, title, description, price, stock}) => {
-  
+    const [quantityInCart, setQuantityInCart] = useState(0)
+
+    const addToCart = (count) => {
+        if(count > 0){
+            alert(`Agregaste ${count} unidades al carrito`)
+            setQuantityInCart(count)
+        }
+    }
+
     return (
     <Card className="ItemDetail">
         <Carousel images={images}/>
@@ -25,11 +35,16 @@ const ItemDetail = ({images, category, title, description, price, stock}) => {
                 {`$ ${price}`} 
             </Typography>
             <Typography variant="subtitle1" color="text.secondary">
-                {`${stock} unidades disponibles`} 
+                {`${stock - quantityInCart} unidades disponibles`} 
             </Typography>
-            <ItemCount stock={stock} initial={0}/>
-            <Divider light />
-            <Button variant="contained">Comprar</Button>
+            {quantityInCart > 0 ? 
+                <Link to='/cart'><Button variant="contained">Ir al carrito</Button></Link>
+                :
+                <>
+                    <ItemCount stock={stock} initial={0} addToCart={addToCart}/>
+                    <Button variant="contained">Comprar</Button>
+                </>
+            }
         </CardContent>
     </Card>
   );

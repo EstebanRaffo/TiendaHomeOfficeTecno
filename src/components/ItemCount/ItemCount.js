@@ -8,7 +8,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Tooltip from '@mui/material/Tooltip';
 
-export default function ItemCount({stock, initial}) {
+export default function ItemCount({stock, initial, addToCart}) {
     const [count, setCount] = React.useState(1);
     let isDisabled = count === stock
 
@@ -31,7 +31,7 @@ export default function ItemCount({stock, initial}) {
             }}
         >
             <div>
-                <Badge color="secondary" badgeContent={count} overlap='circular'></Badge>
+                <Badge color="success" badgeContent={count} overlap='circular'></Badge>
                 <ButtonGroup>
                     <Button
                         aria-label="reduce"
@@ -48,7 +48,7 @@ export default function ItemCount({stock, initial}) {
                     >
                         <AddIcon fontSize="small" />
                     </Button>
-                    <Button>
+                    <Button onClick={() => addToCart(count)}>
                         <Tooltip title="Agregar al carrito">
                             <ShoppingCartIcon />
                         </Tooltip>
