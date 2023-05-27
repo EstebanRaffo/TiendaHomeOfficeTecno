@@ -1,11 +1,16 @@
 .ItemDetail{
     display: flex;
     margin: 2%;
-    padding: 2%;
+    padding: 1.5%;
     align-items: center;
 }
 
 .CardActions{
     display: flex;
     justify-content: right;
+}
+
+hr{
+    margin-left: 15%;
+    width: 70%;
 }

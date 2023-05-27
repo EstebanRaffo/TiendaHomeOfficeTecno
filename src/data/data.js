@@ -7,7 +7,7 @@ const products_data = [
                 "https://i.postimg.cc/K8xyhkFx/notebook-4.png",
                 "https://i.postimg.cc/g2sbzzkR/notebook-5.jpg"],
         category: "notebooks",
-        title: "Notebook 1 Enova Tigerlake 14 Intel Core i5 8GB de RAM 480GB SSD Wind10 Home Gris",
+        title: "Notebook 1 Enova Tigerlake 14 Intel Core i5 8GB de RAM 480GB SSD Wind10 Home",
         price: 129999,
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Commodo ullamcorper a lacus vestibulum sed arcu. Mauris augue neque gravida in fermentum et.",
         stock: 10

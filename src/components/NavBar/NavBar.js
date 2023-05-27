@@ -1,7 +1,6 @@
 import CartWidget from "../CartWidget/CartWidget";
 import SearchBar from "../SearchBar/SearchBar";
 import { Link, NavLink } from "react-router-dom";
-
 import {Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
 

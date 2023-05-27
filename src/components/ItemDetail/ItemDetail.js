@@ -2,6 +2,7 @@ import { useState } from 'react';
 import ItemCount from '../ItemCount/ItemCount';
 import {Card, Typography, Button, CardContent, CardActions, IconButton, Tooltip} from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShareIcon from '@mui/icons-material/Share';
 import "./styles/ItemDetail.css"
 import Carousel from '../Carousel/Carousel';
 import { Link } from "react-router-dom";
@@ -12,7 +13,7 @@ const ItemDetail = ({images, category, title, description, price, stock}) => {
 
     const addToCart = (count) => {
         if(count > 0){
-            alert(`Agregaste ${count} unidades al carrito`)
+            alert(`Agregaste ${count} ${count > 1 ? "unidades" : "unidad"} al carrito`)
             setQuantityInCart(count)
         }
     }
@@ -22,6 +23,11 @@ const ItemDetail = ({images, category, title, description, price, stock}) => {
         <Carousel images={images}/>
         <CardContent>
             <CardActions className="CardActions">
+                <IconButton aria-label="share">
+                    <Tooltip title="Compartir">
+                        <ShareIcon />
+                    </Tooltip>
+                </IconButton>
                 <IconButton aria-label="add to favorites">
                     <Tooltip title="Agregar a favoritos">
                         <FavoriteIcon />
@@ -38,11 +44,15 @@ const ItemDetail = ({images, category, title, description, price, stock}) => {
                 {`${stock - quantityInCart} unidades disponibles`} 
             </Typography>
             {quantityInCart > 0 ? 
-                <Link to='/cart'><Button variant="contained">Ir al carrito</Button></Link>
+                <>
+                    <hr></hr>
+                    <Link to='/cart'><Button variant="contained" sx={{marginLeft: '40%'}}>Ir al carrito</Button></Link>
+                </>    
                 :
                 <>
                     <ItemCount stock={stock} initial={0} addToCart={addToCart}/>
-                    <Button variant="contained">Comprar</Button>
+                    <hr></hr>
+                    <Button variant="contained" size='large' sx={{marginLeft: '40%'}}>Comprar</Button>
                 </>
             }
         </CardContent>

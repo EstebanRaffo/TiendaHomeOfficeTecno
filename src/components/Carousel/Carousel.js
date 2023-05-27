@@ -13,7 +13,7 @@ function ControlledCarousel({images}) {
   return (
     <Carousel className="Carousel" activeIndex={index} onSelect={handleSelect} variant='dark'>
         {images && images.map((img, index) => <Carousel.Item key={index}>
-                                                <img className="d-block w-100" alt={"title"} src={img}/>
+                                                <img className="d-block w-100" alt={"title"} src={img} style={{padding: '15%'}}/>
                                               </Carousel.Item>
                             )}
     </Carousel>
