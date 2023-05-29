@@ -17,14 +17,9 @@ export default function ItemCount({stock, initial, addToCart}) {
             sx={{
             color: 'action.active',
             display: 'flex',
-            flexDirection: 'column',
-            '& > *': {
-                marginBottom: 2,
-            },
             '& .MuiBadge-root': {
                 marginRight: 4,
-            },
-            marginLeft: '35%'
+            }
             }}
         >
             <div>

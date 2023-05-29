@@ -2,15 +2,15 @@
     display: flex;
     margin: 2%;
     padding: 1.5%;
-    align-items: center;
 }
 
-.CardActions{
+.CardActionsUser{
     display: flex;
     justify-content: right;
 }
 
-hr{
-    margin-left: 15%;
-    width: 70%;
+.CardActionsBuy{
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
 }

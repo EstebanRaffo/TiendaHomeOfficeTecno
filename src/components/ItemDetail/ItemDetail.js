@@ -22,7 +22,7 @@ const ItemDetail = ({images, category, title, description, price, stock}) => {
     <Card className="ItemDetail">
         <Carousel images={images}/>
         <CardContent>
-            <CardActions className="CardActions">
+            <CardActions className="CardActionsUser">
                 <IconButton aria-label="share">
                     <Tooltip title="Compartir">
                         <ShareIcon />
@@ -37,24 +37,25 @@ const ItemDetail = ({images, category, title, description, price, stock}) => {
             <Typography variant="h5">{title}</Typography>
             <Typography variant="h6">{category}</Typography>
             <Typography paragraph={true}>{description}</Typography>
-            <Typography variant="body1" color="text.secondary">
+            <Typography variant="h5" sx={{color: '#9bd4d1', fontSize: '1.75rem'}}>
                 {`$ ${price}`} 
             </Typography>
             <Typography variant="subtitle1" color="text.secondary">
                 {`${stock - quantityInCart} unidades disponibles`} 
             </Typography>
-            {quantityInCart > 0 ? 
-                <>
-                    <hr></hr>
-                    <Link to='/cart'><Button variant="contained" sx={{marginLeft: '40%'}}>Ir al carrito</Button></Link>
-                </>    
-                :
-                <>
-                    <ItemCount stock={stock} initial={0} addToCart={addToCart}/>
-                    <hr></hr>
-                    <Button variant="contained" size='large' sx={{marginLeft: '40%'}}>Comprar</Button>
-                </>
-            }
+            <hr></hr>
+            <CardActions className="CardActionsBuy">
+                {quantityInCart > 0 ? 
+                    <>
+                        <Link to='/cart'><Button variant="contained" size='large'>Ir al carrito</Button></Link>
+                    </>    
+                    :
+                    <>
+                        <ItemCount stock={stock} initial={0} addToCart={addToCart}/>
+                        <Button variant="contained" size='large'>Comprar Ahora</Button>
+                    </>
+                }
+            </CardActions>
         </CardContent>
     </Card>
   );
