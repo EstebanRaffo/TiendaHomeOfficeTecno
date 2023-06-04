@@ -2,7 +2,7 @@ import { useState } from 'react';
 import {Box, Badge, ButtonGroup, Button, Tooltip} from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 export default function ItemCount({stock, initial, addToCart}) {
     const [count, setCount] = useState(1);
@@ -42,7 +42,7 @@ export default function ItemCount({stock, initial, addToCart}) {
                     </Button>
                     <Button onClick={() => addToCart(count)} disabled={count < 1}>
                         <Tooltip title="Agregar al carrito">
-                            <ShoppingCartIcon />
+                            <AddShoppingCartIcon />
                         </Tooltip>
                     </Button>
                 </ButtonGroup>

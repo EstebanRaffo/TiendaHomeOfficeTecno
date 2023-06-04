@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import ItemCount from '../ItemCount/ItemCount';
 import {Card, Typography, Button, CardContent, CardActions, IconButton, Tooltip} from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -6,15 +6,20 @@ import ShareIcon from '@mui/icons-material/Share';
 import "./styles/ItemDetail.css"
 import Carousel from '../Carousel/Carousel';
 import { Link } from "react-router-dom";
+import { cartContext } from '../../context/cartContext';
 
 
-const ItemDetail = ({images, category, title, description, price, stock}) => {
+const ItemDetail = ({id, images, category, title, description, price, stock}) => {
     const [quantityInCart, setQuantityInCart] = useState(0)
+    const {addItem, getTotalPrice} = useContext(cartContext)
 
     const addToCart = (count) => {
         if(count > 0){
             alert(`Agregaste ${count} ${count > 1 ? "unidades" : "unidad"} al carrito`)
             setQuantityInCart(count)
+            const item = {id, images, category, title, description, price, stock, count}
+            addItem(item)
+            console.log("Total carrito: ", getTotalPrice())
         }
     }
 
