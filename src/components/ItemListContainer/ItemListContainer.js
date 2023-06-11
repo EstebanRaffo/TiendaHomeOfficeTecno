@@ -1,5 +1,6 @@
 import ItemList from "../ItemList/ItemList";
 import { useEffect, useState } from "react";
+import { exportData } from "../../services/firebase"
 
 /* AsyncMock - servicioMock / backend/nube/api */
 import products from "../../data/data";
@@ -46,6 +47,7 @@ const ItemListContainer = ({ greeting }) => {
     return(
         <div style={styleList}>
             <h1>{greeting}</h1>
+            {/* <button onClick={exportData}>Exportar datos</button> */}
             <ItemList products={products} />
         </div>
     )
