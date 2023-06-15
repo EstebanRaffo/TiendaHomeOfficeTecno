@@ -1,23 +1,14 @@
-import ItemList from "../ItemList/ItemList";
 import { useEffect, useState } from "react";
-import { exportData } from "../../services/firebase"
-
-/* AsyncMock - servicioMock / backend/nube/api */
-import products from "../../data/data";
 import { useParams } from "react-router-dom";
+import { getData, getDataByCategory } from "../../services/firebase"
+import ItemList from "../ItemList/ItemList";
+// import { exportDataWithBatch } from "../../services/firebase"
 
-const getProducts = () => {
-  return new Promise((resolve) => {
-    setTimeout(() => {  
-      resolve(products);
-    }, 1000);
-  });
-}
-
-/* ---------------------------------------------- */
 
 // eslint-disable-next-line react/prop-types
 const ItemListContainer = ({ greeting }) => {
+    const [errors, setErrors] = useState(null)
+    const [isLoading, setIsLoading] = useState(true)
     const [products, setProducts] = useState([])
     const {categoryId} = useParams()
 
@@ -29,26 +20,30 @@ const ItemListContainer = ({ greeting }) => {
         marginTop: "2",
     };
 
+    const fetchData = categoryId === undefined ? getData : getDataByCategory
+
     useEffect(() => {
-        getProducts()
-            .then(response => {
-                if(categoryId){
-                    const productsByCategory = response.filter(product => product.category === categoryId)
-                    setProducts(productsByCategory)
-                }else{
-                    setProducts(response)
-                }
-            })
+        fetchData(categoryId)
+            .then(response => setProducts(response))
             .catch(error => {
                 console.error(error)
+                setErrors(error.message)
             })
+            .finally(() => setIsLoading(false))
     }, [categoryId])
+
+    if(errors)
+    return (
+      <div>
+        <h1>Error</h1>
+        <p>{errors}</p>
+      </div>
+    );
 
     return(
         <div style={styleList}>
-            <h1>{greeting}</h1>
-            {/* <button onClick={exportData}>Exportar datos</button> */}
-            <ItemList products={products} />
+            {/* <button onClick={exportDataWithBatch}>Exportar datos</button> */}
+            <ItemList products={products} isLoading={isLoading}/>
         </div>
     )
 } 

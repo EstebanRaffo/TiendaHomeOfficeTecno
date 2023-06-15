@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc } from "firebase/firestore"
+import { getFirestore, collection, addDoc, writeBatch, doc, query, orderBy, getDoc, getDocs, where } from "firebase/firestore"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import products from "../data/data";
@@ -18,8 +18,9 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-console.log(db)
 
+
+// ################################################### EXPORTAR DATOS #########################################################
 export async function exportData() {
     const productsCollectionRef = collection(db, "products");
   
@@ -29,4 +30,98 @@ export async function exportData() {
       const res = await addDoc(productsCollectionRef, item);
       console.log("Documento creado:", res.id);
     }
+}
+
+export async function exportDataWithBatch() {
+    const batch = writeBatch(db);
+  
+    const collectionRef = collection(db, "products");
+  
+    for (let item of products) {
+      item.index = item.id;
+      delete item.id;
+  
+      const docRef = doc(collectionRef);
+      batch.set(docRef, item);
+    }
+  
+    await batch.commit();
+    console.log("Items Exportados");
+}
+
+// ##############################################################################################################################
+
+
+/* Promise disfrazada de function */
+export async function getData() {
+    const productsCollectionRef = collection(db, "products");
+  
+    const q = query(productsCollectionRef, orderBy("index"));
+    const productsSnapshot = await getDocs(q);
+    const arrayDocs = productsSnapshot.docs;
+  
+    const dataDocs = arrayDocs.map((doc) => {
+      return { ...doc.data(), id: doc.id };
+    });
+  
+    return dataDocs;
+  }
+  
+  /* Promise disfrazada de function */
+  export async function getItemData(idUrl) {
+    const docRef = doc(db, "products", idUrl);
+    const docSnap = await getDoc(docRef);
+    return { id: docSnap.id, ...docSnap.data() };
+  }
+  
+  export async function getDataByCategory(idCategory) {
+    /* const q = query(collection(db, "cities"), where("capital", "==", true)); */
+    const productsCollectionRef = collection(db, "products");
+    const q = query(productsCollectionRef, where("category", "==", idCategory));
+    const productsSnapshot = await getDocs(q);
+    const arrayDocs = productsSnapshot.docs;
+    const dataDocs = arrayDocs.map((doc) => {
+      return { ...doc.data(), id: doc.id };
+    });
+  
+    return dataDocs;
+  }
+  
+  export async function createOrder(data) {
+    const ordersCollectionRef = collection(db, "orders");
+  
+    const response = await addDoc(ordersCollectionRef, data);
+    return response.id;
+  
+    /*  addDoc(ordersCollectionRef, data).then((respuesta) => {
+      console.log(respuesta);
+      console.log("Orden creada", respuesta.id);
+    }); */
+  }
+  
+  export async function createOrderWithStockUpdate(data) {
+    const ordersCollectionRef = collection(db, "orders");
+    const batch = writeBatch(db);
+    const { items } = data;
+  
+    for (let itemInCart of items) {
+      const refDoc = doc(db, "products", itemInCart.id);
+      const docSnap = await getDoc(refDoc);
+  
+      const { stock } = docSnap.data();
+      console.log(stock);
+  
+      const stockToUpdate = stock - itemInCart.count;
+      if (stockToUpdate < 0) {
+        throw new Error(`No hay stock suficiente del producto: ${itemInCart.id}`);
+      } else {
+        const docRef = doc(db, "products", itemInCart.id);
+        batch.update(docRef, { stock: stockToUpdate });
+      }
+    }
+  
+    await batch.commit();
+    const response = await addDoc(ordersCollectionRef, data);
+  
+    return response.id;
   }

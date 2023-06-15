@@ -11,7 +11,7 @@ const products_data = [
         price: 129999,
         description: "NOTEBOOK 14\" DELL LATITUDE 3410 WINDOWS 10 HOME Intel Core i3 / 4 GB RAM / 500 GB HDD 300901073 Por sus características de conectividad y administración la portátil Dell Latitude 3400 es ideal para empresas en crecimiento.",
         details: "Amplíe su oficina: La Dell Latitude 3400 mejora su flujo de trabajo en cualquier lugar y además se ve bien. Es más pequeña que la generación anterior, con una nueva forma de cuña que es aún más compacta. Los bordes brillantes se ven elegantes y modernos en cualquier entorno. Alimentación durante todo el día: La duración prolongada de la batería supera todo su día de trabajo. - Procesador: Intel® Core™ i3-10110U (2 Core, 6M cache, 2.1GHz - 4.1GHz) - Sistema operativo: Windows 10 Home - Memoria RAM: 4 GB DDR4 (1 x 4GB, expandible hasta 16GB) - Almacenamiento: 500 GB 5400 RPM 2.5 - Pantalla: 14\" HD (1366 x 768 px) Anti-Glare - Cámara: Integrada HD 1280 x 720 px, con micrófonos - Audio: Parlantes estéreo dobles de 2 W - Conectividad: Wi-Fi 6 AX201 2x2 802.11ax + Bluetooth 5.1 - Batería: De carga rápida (ExpressCharge™) de 40 Whr (3 celdas) - Puertos: -- 1 puerto RJ-45 10/100/1000 Mbps -- 1 puerto USB 2.0 -- 1 puerto USB 3.2 Type-A Gen 1 con PowerShare -- 1 puerto USB 3.2 Type-A Gen 1 -- 1 puerto USB 3.2 Type-C Gen 1 con modo DisplayPort 1.2 -- 1 puerto HDMI 1.4 -- 1 conector de audio universal -- 1 ranura de lector de tarjetas SD 3.0 - Dimensiones: 326,5 x 226,4 x 18,4 mm - Peso: 1,65 kg",
-        stock: 100
+        stock: 10
     },
     {
         id: 2,
@@ -39,7 +39,7 @@ const products_data = [
         price: 119999,
         description: "NOTEBOOK 14\" DELL LATITUDE 3410 WINDOWS 10 HOME Intel Core i3 / 4 GB RAM / 500 GB HDD 300901073 Por sus características de conectividad y administración la portátil Dell Latitude 3400 es ideal para empresas en crecimiento.",
         details: "Amplíe su oficina: La Dell Latitude 3400 mejora su flujo de trabajo en cualquier lugar y además se ve bien. Es más pequeña que la generación anterior, con una nueva forma de cuña que es aún más compacta. Los bordes brillantes se ven elegantes y modernos en cualquier entorno. Alimentación durante todo el día: La duración prolongada de la batería supera todo su día de trabajo. - Procesador: Intel® Core™ i3-10110U (2 Core, 6M cache, 2.1GHz - 4.1GHz) - Sistema operativo: Windows 10 Home - Memoria RAM: 4 GB DDR4 (1 x 4GB, expandible hasta 16GB) - Almacenamiento: 500 GB 5400 RPM 2.5 - Pantalla: 14\" HD (1366 x 768 px) Anti-Glare - Cámara: Integrada HD 1280 x 720 px, con micrófonos - Audio: Parlantes estéreo dobles de 2 W - Conectividad: Wi-Fi 6 AX201 2x2 802.11ax + Bluetooth 5.1 - Batería: De carga rápida (ExpressCharge™) de 40 Whr (3 celdas) - Puertos: -- 1 puerto RJ-45 10/100/1000 Mbps -- 1 puerto USB 2.0 -- 1 puerto USB 3.2 Type-A Gen 1 con PowerShare -- 1 puerto USB 3.2 Type-A Gen 1 -- 1 puerto USB 3.2 Type-C Gen 1 con modo DisplayPort 1.2 -- 1 puerto HDMI 1.4 -- 1 conector de audio universal -- 1 ranura de lector de tarjetas SD 3.0 - Dimensiones: 326,5 x 226,4 x 18,4 mm - Peso: 1,65 kg",
-        stock: 100
+        stock: 10
     },
     {
         id: 4,

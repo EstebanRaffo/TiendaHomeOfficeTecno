@@ -1,38 +1,44 @@
 import {useState, useEffect} from 'react';
-import ItemDetail from '../ItemDetail/ItemDetail';
-import './styles/ItemDetailContainer.css';
 import { useParams } from "react-router-dom";
-
-/* AsyncMock - servicioMock / backend/nube/api */
-import products from "../../data/data"
-
-const getProductById = (id) => {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(products.find(prod => prod.id === Number(id)))
-        }, 1000)
-    })
-}
+import './styles/ItemDetailContainer.css';
+import ItemDetail from '../ItemDetail/ItemDetail';
+import { getItemData } from '../../services/firebase'
 
 
 const ItemDetailContainer = () => {
+    const [errors, setErrors] = useState(null)
     const [product, setProduct] = useState(null)
-    const {id} = useParams()
+    const { id } = useParams()
 
     useEffect(() => {
-        getProductById(id)
-            .then(response => {
-                setProduct(response)
-            })
+        getItemData(id)
+            .then(response => setProduct(response))
             .catch(error => {
                 console.error(error)
+                setErrors(error.message)
             })
     }, [id])
 
+    if(errors)
     return (
-        <div className='ItemDetailContainer'>
-            <ItemDetail {...product}/>
-        </div>
+      <div>
+        <h1>Error</h1>
+        <p>{errors}</p>
+      </div>
+    );
+
+    if(product){
+        return (
+            <div className='ItemDetailContainer'>
+                <ItemDetail {...product} />
+            </div>
+        )
+    }
+
+    return(
+        <>
+            <h1>Cargando...</h1>
+        </>
     )
 }
 
