@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from '@mui/material';
 import CartItem from "../CartItem/CartItem";
 import { createOrderWithStockUpdate } from "../../services/firebase";
+import CheckoutForm from "../CheckoutForm/CheckoutForm";
 
 
 const CartView = () => {
@@ -12,11 +13,12 @@ const CartView = () => {
     
     async function handleConfirm(){
         const order = {
-            items: cart,
             buyer: {
                 name: "Esteban Raffo",
+                phone: "1234-5678",
                 email: "e.fraffo@gmail.com"
             },
+            items: cart,
             date: new Date(),
             price: getTotalPrice()
         };
@@ -39,21 +41,22 @@ const CartView = () => {
 
     return(
         <div>
-            <ol>
-                {cart.length ? 
-                    cart.map(item => <CartItem key={item.id} {...item} />) 
-                    :
-                    <>
-                        <h1>Tu carrito está vacío</h1>
-                        <Link to='/'><Button variant="contained" size='large'>Ir al catálogo</Button></Link>
-                    </>
-                }
-            </ol>
-            <br></br>
-            <h3>Total: $ {getTotalPrice()}</h3>
-            <Button onClick={() => clearCart()}>Vaciar Carrito</Button>
-            <br></br>
-            <Button variant="contained" size='large' onClick={handleConfirm}>Comprar Carrito</Button>
+            {cart.length ? 
+                <>
+                    {cart.map(item => <CartItem key={item.id} {...item} />)}
+                    <br></br>
+                    <h3>Total: $ {getTotalPrice()}</h3>
+                    <Button onClick={() => clearCart()}>Vaciar Carrito</Button>
+                    <br></br>
+                    <CheckoutForm />
+                    <Button variant="contained" size='large' onClick={handleConfirm}>Comprar Carrito</Button>
+                </>
+                :
+                <>
+                    <h1>Tu carrito está vacío</h1>
+                    <Link to='/'><Button variant="contained" size='large'>Ir al catálogo</Button></Link>
+                </>
+            }
         </div>
     )
 }

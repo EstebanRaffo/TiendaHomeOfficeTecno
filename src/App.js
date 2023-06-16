@@ -5,7 +5,7 @@ import CartView from './components/CartView/CartView'
 import HomePage from './pages/HomePage';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import {CartContextProvider} from './context/cartContext'
-
+import BuyOrder from './components/BuyOrder/BuyOrder'
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
           <Route path='/category/:categoryId' element={<HomePage/>}/>
           <Route path='/product/:id' element={<ItemDetailContainer/>}/>
           <Route path='/cart' element={<CartView/>} />
+          <Route path='/order-confirmation/:orderId' element={<BuyOrder/>}></Route>
           <Route path='*' element={<h4>Error 404: Page not found</h4>}/>
         </Routes>
       </BrowserRouter>
