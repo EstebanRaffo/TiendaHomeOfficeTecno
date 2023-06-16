@@ -33,17 +33,17 @@ const ItemListContainer = ({ greeting }) => {
     }, [categoryId])
 
     if(errors)
-    return (
-      <div>
-        <h1>Error</h1>
-        <p>{errors}</p>
-      </div>
-    );
+        return (
+            <div>
+                <h1>Error</h1>
+                <p>{errors}</p>
+            </div>
+        );
 
     return(
         <div style={styleList}>
             {/* <button onClick={exportDataWithBatch}>Exportar datos</button> */}
-            <ItemList products={products} isLoading={isLoading}/>
+            {isLoading ? <h1>Cargando...</h1> : <ItemList products={products} />}
         </div>
     )
 } 

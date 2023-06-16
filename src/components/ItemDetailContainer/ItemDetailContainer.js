@@ -8,6 +8,7 @@ import { getItemData } from '../../services/firebase'
 const ItemDetailContainer = () => {
     const [errors, setErrors] = useState(null)
     const [product, setProduct] = useState(null)
+    const [isLoading, setIsLoading] = useState(true)
     const { id } = useParams()
 
     useEffect(() => {
@@ -17,29 +18,24 @@ const ItemDetailContainer = () => {
                 console.error(error)
                 setErrors(error.message)
             })
+            .finally(() => setIsLoading(false))
     }, [id])
 
     if(errors)
-    return (
-      <div>
-        <h1>Error</h1>
-        <p>{errors}</p>
-      </div>
-    );
+        return (
+            <div>
+                <h1>Error</h1>
+                <p>{errors}</p>
+            </div>
+        );
 
     if(product){
         return (
             <div className='ItemDetailContainer'>
-                <ItemDetail {...product} />
+                {isLoading ? <h1>Cargando...</h1> : <ItemDetail {...product} />}
             </div>
         )
     }
-
-    return(
-        <>
-            <h1>Cargando...</h1>
-        </>
-    )
 }
 
 export default ItemDetailContainer
