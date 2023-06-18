@@ -21,15 +21,15 @@ const ItemListContainer = ({ greeting }) => {
     };
 
     const fetchData = categoryId === undefined ? getData : getDataByCategory
-
     useEffect(() => {
         fetchData(categoryId)
-            .then(response => setProducts(response))
-            .catch(error => {
-                console.error(error)
-                setErrors(error.message)
-            })
-            .finally(() => setIsLoading(false))
+        .then(response => setProducts(response))
+        .catch(error => {
+            console.error(error)
+            setErrors(error.message)
+        })
+        .finally(() => setIsLoading(false))
+    // eslint-disable-next-line
     }, [categoryId])
 
     if(errors)

@@ -4,7 +4,6 @@ export const cartContext = createContext({cart: []})
 
 export const CartContextProvider = ({children}) => {
     const [cart, setCart] = useState([])
-    console.log("Items en el carrito: ", cart)
     
     const getTotalPrice = () => {
         return cart.reduce((acumulador, item) => { return acumulador + item.count * item.price }, 0)
