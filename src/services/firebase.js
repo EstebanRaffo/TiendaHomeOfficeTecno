@@ -109,7 +109,7 @@ export async function getData() {
       const docSnap = await getDoc(refDoc);
   
       const { stock } = docSnap.data();
-      console.log(stock);
+      console.log("stock anterior: ", stock);
   
       const stockToUpdate = stock - itemInCart.count;
       if (stockToUpdate < 0) {

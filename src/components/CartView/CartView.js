@@ -4,20 +4,16 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from '@mui/material';
 import CartItem from "../CartItem/CartItem";
 import { createOrderWithStockUpdate } from "../../services/firebase";
-import CheckoutForm from "../CheckoutForm/CheckoutForm";
+import Checkout from "../Checkout/Checkout";
 
 
 const CartView = () => {
     const { cart, clearCart, getTotalPrice } = useContext(cartContext)
     const navigateTo = useNavigate()
     
-    async function handleConfirm(){
+    async function handleConfirm(userData){
         const order = {
-            buyer: {
-                name: "Esteban Raffo",
-                phone: "1234-5678",
-                email: "e.fraffo@gmail.com"
-            },
+            buyer: userData,
             items: cart,
             date: new Date(),
             price: getTotalPrice()
@@ -28,6 +24,7 @@ const CartView = () => {
             console.log("respuesta: ", id)
             clearCart()
             navigateTo(`/order-confirmation/${id}`)
+            // navigateTo(`/checkout/${id}/data`)
             /* 
             1. alert: SweetAlert/toastify -> muestren el id
             2. redirección: React Router -> /confirmation
@@ -48,8 +45,7 @@ const CartView = () => {
                     <h3>Total: $ {getTotalPrice()}</h3>
                     <Button onClick={() => clearCart()}>Vaciar Carrito</Button>
                     <br></br>
-                    <CheckoutForm />
-                    <Button variant="contained" size='large' onClick={handleConfirm}>Comprar Carrito</Button>
+                    <Checkout onConfirm={handleConfirm}/>
                 </>
                 :
                 <>
