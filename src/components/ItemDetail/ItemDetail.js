@@ -19,7 +19,6 @@ const ItemDetail = ({id, images, category, title, description, price, stock}) =>
             setQuantityInCart(count)
             const item = {id, images, category, title, description, price, stock, count}
             addItem(item)
-            console.log("Total carrito: ", getTotalPrice())
         }
     }
 

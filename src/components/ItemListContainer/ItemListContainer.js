@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getData, getDataByCategory } from "../../services/firebase"
 import ItemList from "../ItemList/ItemList";
+import { Box, LinearProgress } from '@mui/material';
 // import { exportDataWithBatch } from "../../services/firebase"
 
 
@@ -43,7 +44,12 @@ const ItemListContainer = ({ greeting }) => {
     return(
         <div style={styleList}>
             {/* <button onClick={exportDataWithBatch}>Exportar datos</button> */}
-            {isLoading ? <h1>Cargando...</h1> : <ItemList products={products} />}
+            {isLoading ? 
+                <Box sx={{ width: '100%' }}>
+                    <LinearProgress />
+                </Box> 
+                : 
+                <ItemList products={products} />}
         </div>
     )
 } 

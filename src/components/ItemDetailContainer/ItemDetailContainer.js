@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import './styles/ItemDetailContainer.css';
 import ItemDetail from '../ItemDetail/ItemDetail';
 import { getItemData } from '../../services/firebase'
+import { Box, LinearProgress } from '@mui/material';
+
 
 
 const ItemDetailContainer = () => {
@@ -32,7 +34,12 @@ const ItemDetailContainer = () => {
     if(product){
         return (
             <div className='ItemDetailContainer'>
-                {isLoading ? <h1>Cargando...</h1> : <ItemDetail {...product} />}
+                {isLoading ? 
+                    <Box sx={{ width: '100%' }}>
+                        <LinearProgress />
+                    </Box>  
+                    : 
+                    <ItemDetail {...product} />}
             </div>
         )
     }

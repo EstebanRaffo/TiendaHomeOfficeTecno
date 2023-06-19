@@ -5,12 +5,12 @@ import { Button } from '@mui/material';
 import CartItem from "../CartItem/CartItem";
 import { createOrderWithStockUpdate } from "../../services/firebase";
 import Checkout from "../Checkout/Checkout";
-
+import AutoGrid from "../AutoGrid/AutoGrid";
 
 const CartView = () => {
     const { cart, clearCart, getTotalPrice } = useContext(cartContext)
     const navigateTo = useNavigate()
-    
+    console.log("cart: ", cart)
     async function handleConfirm(userData){
         const order = {
             buyer: userData,
@@ -40,7 +40,8 @@ const CartView = () => {
         <div>
             {cart.length ? 
                 <>
-                    {cart.map(item => <CartItem key={item.id} {...item} />)}
+                    {/* {cart.map(item => <CartItem key={item.id} {...item} />)} */}
+                    {cart.map(item => <AutoGrid key={item.id} {...item} />)}
                     <br></br>
                     <h3>Total: $ {getTotalPrice()}</h3>
                     <Button onClick={() => clearCart()}>Vaciar Carrito</Button>
