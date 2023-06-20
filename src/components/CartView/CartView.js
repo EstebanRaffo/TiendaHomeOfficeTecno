@@ -8,7 +8,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 const CartView = () => {
     const { cart, clearCart, getTotalPrice } = useContext(cartContext)
     const navigateTo = useNavigate()
-    console.log("cart: ", cart)
 
     const styles = { textAlign: 'right', paddingRight: '20%', marginTop: '1%' }
 

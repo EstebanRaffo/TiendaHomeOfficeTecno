@@ -118,7 +118,6 @@ export async function createOrderWithStockUpdate(data) {
     const docSnap = await getDoc(refDoc);
 
     const { stock } = docSnap.data();
-    console.log("stock anterior: ", stock);
 
     const stockToUpdate = stock - itemInCart.count;
     if (stockToUpdate < 0) {
