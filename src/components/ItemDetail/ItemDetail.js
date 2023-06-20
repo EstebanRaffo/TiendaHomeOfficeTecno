@@ -11,7 +11,7 @@ import { cartContext } from '../../context/cartContext';
 
 const ItemDetail = ({id, images, category, title, description, price, stock}) => {
     const [quantityInCart, setQuantityInCart] = useState(0)
-    const {addItem, getTotalPrice} = useContext(cartContext)
+    const {addItem} = useContext(cartContext)
 
     const addToCart = (count) => {
         if(count > 0){

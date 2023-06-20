@@ -7,7 +7,7 @@ import { Box, LinearProgress } from '@mui/material';
 
 
 // eslint-disable-next-line react/prop-types
-const ItemListContainer = ({ greeting }) => {
+const ItemListContainer = () => {
     const [errors, setErrors] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
     const [products, setProducts] = useState([])

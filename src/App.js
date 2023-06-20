@@ -19,7 +19,7 @@ function App() {
           <Route path='/category/:categoryId' element={<HomePage/>}/>
           <Route path='/product/:id' element={<ItemDetailContainer/>}/>
           <Route path='/cart' element={<CartView/>} />
-          <Route path='/checkout/:orderId/data' element={<Checkout/>} />
+          <Route path='/checkout' element={<Checkout/>} />
           <Route path='/order-confirmation/:orderId' element={<BuyOrder/>}></Route>
           <Route path='*' element={<h4>Error 404: Page not found</h4>}/>
         </Routes>
