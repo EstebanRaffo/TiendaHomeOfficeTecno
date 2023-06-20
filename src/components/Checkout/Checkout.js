@@ -1,118 +1,127 @@
-import { useState, useContext } from 'react';
-import { useNavigate } from "react-router-dom";
-import { Button } from '@mui/material';
-import { createOrderWithStockUpdate } from "../../services/firebase";
-import { cartContext } from "../../context/cartContext";
+import * as React from 'react';
+import CssBaseline from '@mui/material/CssBaseline';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Toolbar from '@mui/material/Toolbar';
+import Paper from '@mui/material/Paper';
+import Stepper from '@mui/material/Stepper';
+import Step from '@mui/material/Step';
+import StepLabel from '@mui/material/StepLabel';
+import Button from '@mui/material/Button';
+import Link from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import AddressForm from './AddressForm';
+import PaymentForm from './PaymentForm';
+import Review from './Review';
 
-
-function InputForm(props) {
+function Copyright() {
   return (
-    <div style={{ display: 'flex', marginBottom: 8 }}>
-      <label style={{ width: '100px', marginRight: 4 }}>{props.label}</label>
-      <input
-        value={props.value}
-        name={props.name}
-        type="text"
-        onChange={props.onInputChange}
-      />
-    </div>
+    <Typography variant="body2" color="text.secondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://mui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
   );
 }
 
-export default function CheckoutForm() {
-  const [userData, setUserData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    // adress: '',
-    // city: '',
-    // zipcode: '',
-    // dni: '',
-  });
+const steps = ['Shipping address', 'Payment details', 'Review your order'];
 
-  const { cart, clearCart, getTotalPrice } = useContext(cartContext)
-  const navigateTo = useNavigate()
-
-
-  function onInputChange(evt) {
-    //1. Que input se modifico
-    const field = evt.target.name;
-    const value = evt.target.value;
-
-    //2. modificar el State
-    //2.A Copiar el estate
-    const newState = { ...userData };
-    //2.B modificar la propiedad correspondiente
-    newState[field] = value;
-
-    //3. Set State
-    setUserData(newState);
+function getStepContent(step) {
+  switch (step) {
+    case 0:
+      return <AddressForm />;
+    case 1:
+      return <PaymentForm />;
+    case 2:
+      return <Review />;
+    default:
+      throw new Error('Unknown step');
   }
+}
 
-  function clearData() {
-    setUserData({
-      name: '',
-      email: '',
-      phone: '',
-      adress: '',
-      city: '',
-      zipcode: '',
-    });
-  }
+// TODO remove, this demo shouldn't need to reset the theme.
+const defaultTheme = createTheme();
 
-  function handleSubmit(evt) {
-    evt.preventDefault();
-    console.log('userData: ', userData);
-    onConfirm(userData)
-  }
+export default function Checkout() {
+  const [activeStep, setActiveStep] = React.useState(0);
 
-  async function onConfirm(userData){
-    const order = {
-        buyer: userData,
-        items: cart,
-        date: new Date(),
-        price: getTotalPrice()
-    };
+  const handleNext = () => {
+    setActiveStep(activeStep + 1);
+  };
 
-    try{
-        const id = await createOrderWithStockUpdate(order)
-        console.log("respuesta: ", id)
-        clearCart()
-        navigateTo(`/order-confirmation/${id}`)
-        /* 
-        1. alert: SweetAlert/toastify -> muestren el id
-        2. redirección: React Router -> /confirmation
-        3. rendering condicional -> modificando un state
-        */ 
-    }catch(error){
-        alert(error)
-    }
-  }
-
-  let arrayUserData = Object.keys(userData);
+  const handleBack = () => {
+    setActiveStep(activeStep - 1);
+  };
 
   return (
-    <div style={{backgroundColor: '#E0ECEA'}}>
-      <form onSubmit={handleSubmit}>
-        <h1>Ingresa tus datos para completar la compra 🛍</h1>
-        {arrayUserData.map((field) => (
-          <InputForm
-            key={field}
-            name={field}
-            value={userData[field]}
-            onInputChange={onInputChange}
-            label={field}
-          />
-        ))}
-        <button onClick={clearData}>Limpiar Datos</button>
-        <Button variant="contained" size='large' type='submit' disabled={
-          !(
-            userData.name !== '' &&
-            userData.phone !== '' &&
-            userData.email !== ''
-            )
-          }>Comprar Carrito</Button>
-      </form>
-    </div>
+    <ThemeProvider theme={defaultTheme}>
+      <CssBaseline />
+      <AppBar
+        position="absolute"
+        color="default"
+        elevation={0}
+        sx={{
+          position: 'relative',
+          borderBottom: (t) => `1px solid ${t.palette.divider}`,
+        }}
+      >
+        <Toolbar>
+          <Typography variant="h6" color="inherit" noWrap>
+            Company name
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+        <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+          <Typography component="h1" variant="h4" align="center">
+            Checkout
+          </Typography>
+          <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
+            {steps.map((label) => (
+              <Step key={label}>
+                <StepLabel>{label}</StepLabel>
+              </Step>
+            ))}
+          </Stepper>
+          {activeStep === steps.length ? (
+            <React.Fragment>
+              <Typography variant="h5" gutterBottom>
+                Thank you for your order.
+              </Typography>
+              <Typography variant="subtitle1">
+                Your order number is #2001539. We have emailed your order
+                confirmation, and will send you an update when your order has
+                shipped.
+              </Typography>
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              {getStepContent(activeStep)}
+              <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                {activeStep !== 0 && (
+                  <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
+                    Back
+                  </Button>
+                )}
+
+                <Button
+                  variant="contained"
+                  onClick={handleNext}
+                  sx={{ mt: 3, ml: 1 }}
+                >
+                  {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                </Button>
+              </Box>
+            </React.Fragment>
+          )}
+        </Paper>
+        <Copyright />
+      </Container>
+    </ThemeProvider>
   );
 }
