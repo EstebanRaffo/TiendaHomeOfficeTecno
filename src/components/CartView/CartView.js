@@ -16,12 +16,12 @@ const CartView = () => {
         <div style={{textAlign: 'center', padding: '1%', backgroundColor: '#E0ECEA'}}>
             <>
                 <h1>Mi Carrito</h1>
-                <div style={styles}>
-                    <Button color="error" variant="contained" onClick={() => clearCart()}>Vaciar Carrito <DeleteIcon /></Button>
-                </div>
             </>
             {cart.length ? 
                 <>
+                    <div style={styles}>
+                        <Button color="error" variant="contained" onClick={() => clearCart()}>Vaciar Carrito <DeleteIcon /></Button>
+                    </div>
                     {cart.map(item => <AutoGrid key={item.id} {...item} />)}
                     <div style={styles}>
                         <h3>El total de tu compra es $ {getTotalPrice()}</h3>
