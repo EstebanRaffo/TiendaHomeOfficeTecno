@@ -1,7 +1,9 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { cartContext } from "../../context/cartContext";
 import { styled } from '@mui/material/styles';
-import { Box, IconButton, Paper, Grid, Tooltip } from '@mui/material';
+import { Box, IconButton, Paper, Grid, Tooltip, Button } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CartItem from '../CartItem/CartItem';
 
@@ -13,8 +15,15 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function AutoGrid(item) {
-    const { removeItem } = useContext(cartContext)
-    const {id, count, price} = item
+    const { removeItem, addItem } = useContext(cartContext)
+    const {id, count, price, stock} = item
+    const [newCount, setNewCount] = useState(count)
+
+    function handleNewCount(){
+        setNewCount(newCount)
+        const newItem = {...item, count: newCount}
+        addItem(newItem)
+    }
 
     return (
         <Box sx={{ width: '90%', padding: '1%', justifyContent: 'center' }}>
@@ -23,7 +32,24 @@ export default function AutoGrid(item) {
                     <CartItem {...item} />
                 </Grid>
                 <Grid item xs={2}>
-                    <Item>{count}</Item>
+                    <Item>
+                        <Button
+                            aria-label="reduce"
+                            onClick={() => {
+                                handleNewCount(Math.max(newCount - 1, newCount));
+                            }}
+                        >
+                            <RemoveIcon fontSize="small" />
+                        </Button>
+                        {count}
+                        <Button
+                            aria-label="increase"
+                            onClick={handleNewCount}
+                            disabled={stock < count}
+                        >
+                            <AddIcon fontSize="small" />
+                        </Button>
+                    </Item>
                 </Grid>
                 <Grid item xs={2}>
                     <Item>$ {count * price}</Item>

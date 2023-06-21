@@ -5,7 +5,7 @@ import AutoGrid from "../AutoGrid/AutoGrid";
 import { Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const CartView = () => {
+export default function CartView(){
     const { cart, clearCart, getTotalPrice } = useContext(cartContext)
     const navigateTo = useNavigate()
 
@@ -36,5 +36,3 @@ const CartView = () => {
         </div>
     )
 }
-
-export default CartView
