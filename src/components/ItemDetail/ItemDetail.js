@@ -7,6 +7,7 @@ import "./styles/ItemDetail.css"
 import Carousel from '../Carousel/Carousel';
 import { Link } from "react-router-dom";
 import { cartContext } from '../../context/cartContext';
+import swal from 'sweetalert'
 
 
 const ItemDetail = ({id, images, category, title, description, price, stock}) => {
@@ -15,7 +16,7 @@ const ItemDetail = ({id, images, category, title, description, price, stock}) =>
 
     const addToCart = (count) => {
         if(count > 0){
-            alert(`Agregaste ${count} ${count > 1 ? "unidades" : "unidad"} al carrito`)
+            swal("Bien hecho!", `Agregaste ${count} ${count > 1 ? "unidades" : "unidad"} al carrito`, "success")
             setQuantityInCart(count)
             const item = {id, images, category, title, description, price, stock, count}
             addItem(item)

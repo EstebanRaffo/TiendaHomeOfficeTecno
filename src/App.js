@@ -1,5 +1,6 @@
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
+import Footer from './components/Footer/Footer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import CartView from './components/CartView/CartView'
 import HomePage from './pages/HomePage';
@@ -24,6 +25,7 @@ function App() {
           <Route path='/order-confirmation/:orderId' element={<BuyOrder/>}></Route>
           <Route path='*' element={<h4>Error 404: Page not found</h4>}/>
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </CartContextProvider>
   )

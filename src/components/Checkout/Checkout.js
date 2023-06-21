@@ -2,11 +2,8 @@ import { useState, useContext, Fragment } from 'react';
 import { useNavigate } from "react-router-dom";
 import { createOrderWithStockUpdate } from "../../services/firebase";
 import { cartContext } from "../../context/cartContext";
-import {CssBaseline, LinearProgress} from '@mui/material';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Toolbar from '@mui/material/Toolbar';
+import {CssBaseline, LinearProgress, Box, Container} from '@mui/material';
+
 import Paper from '@mui/material/Paper';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -14,6 +11,7 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
@@ -36,7 +34,7 @@ export default function Checkout() {
   const { cart, clearCart, getTotalPrice } = useContext(cartContext)
   const navigateTo = useNavigate()
 
-  function onInputChange(evt) {
+  function onInputChange({evt}) {
     const field = evt.target.name;
     const value = evt.target.value;
 
