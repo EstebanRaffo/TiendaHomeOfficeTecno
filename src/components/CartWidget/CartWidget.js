@@ -1,10 +1,9 @@
 import {useContext} from 'react';
-import Badge from '@mui/material/Badge';
-import { styled } from '@mui/material/styles';
-import IconButton from '@mui/material/IconButton';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { cartContext } from '../../context/cartContext';
 import { Link } from "react-router-dom";
+import { cartContext } from '../../context/cartContext';
+import { Badge, IconButton } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {

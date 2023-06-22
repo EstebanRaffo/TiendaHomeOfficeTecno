@@ -1,11 +1,9 @@
 import {useState, useEffect} from 'react';
 import { useParams } from "react-router-dom";
-import './styles/ItemDetailContainer.css';
 import ItemDetail from '../ItemDetail/ItemDetail';
+import './styles/ItemDetailContainer.css';
 import { getItemData } from '../../services/firebase'
 import { Box, LinearProgress } from '@mui/material';
-
-
 
 const ItemDetailContainer = () => {
     const [errors, setErrors] = useState(null)

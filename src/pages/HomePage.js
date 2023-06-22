@@ -5,7 +5,7 @@ import '../App.css';
 const HomePage = () => {
     return(
         <div className='App'>
-            <ItemListContainer greeting={'Bienvenidos'}/>
+            <ItemListContainer />
         </div>
     )
 }

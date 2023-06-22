@@ -1,11 +1,11 @@
 import { useContext } from "react";
+import CartItem from '../CartItem/CartItem';
 import { cartContext } from "../../context/cartContext";
-import { styled } from '@mui/material/styles';
 import { Box, IconButton, Paper, Grid, Tooltip, Button } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteIcon from '@mui/icons-material/Delete';
-import CartItem from '../CartItem/CartItem';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',

@@ -1,7 +1,7 @@
-import { useContext } from "react"
-import { cartContext } from "../../context/cartContext"
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AutoGrid from "../AutoGrid/AutoGrid";
+import { cartContext } from "../../context/cartContext";
 import { Button, Divider, Box } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
@@ -15,7 +15,7 @@ export default function CartView(){
     return(
         <Box sx={{textAlign: 'center', padding: '1%', backgroundColor: '#E0ECEA'}}>
             <>
-                <h1>Mi Carrito</h1>
+                <h1 style={{color: '#0485C1'}}>Mi Carrito</h1>
             </>
             {cart.length ? 
                 <>
@@ -35,8 +35,8 @@ export default function CartView(){
                 </>
                 :
                 <Box sx={{ width: '100%', padding: '1%', textAlign: 'center', margin: '10% 0' }}>
-                    <h1>Tu carrito está vacío</h1>
-                    <Link to='/'><Button variant="contained" size='large'>Ir al catálogo</Button></Link>
+                    <h1 style={{marginBottom: '1.5%'}}>Tu carrito está vacío</h1>
+                    <Link to='/'><Button variant="contained" size='large' sx={{marginTop: '1%'}}>Ir al catálogo</Button></Link>
                 </Box>
             }
         </Box>

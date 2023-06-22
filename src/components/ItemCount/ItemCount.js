@@ -22,31 +22,29 @@ export default function ItemCount({stock, initial, addToCart}) {
             }
             }}
         >
-            <div>
-                <Badge color="success" badgeContent={count} overlap='circular'></Badge>
-                <ButtonGroup>
-                    <Button
-                        aria-label="reduce"
-                        onClick={() => {
-                            setCount(Math.max(count - 1, initial));
-                        }}
-                    >
-                        <RemoveIcon fontSize="small" />
-                    </Button>
-                    <Button
-                        aria-label="increase"
-                        onClick={handleAdd}
-                        disabled={isDisabled}
-                    >
-                        <AddIcon fontSize="small" />
-                    </Button>
-                    <Button onClick={() => addToCart(count)} disabled={count < 1}>
-                        <Tooltip title="Agregar al carrito">
-                            <AddShoppingCartIcon />
-                        </Tooltip>
-                    </Button>
-                </ButtonGroup>
-            </div>
+            <Badge color="success" badgeContent={count} overlap='circular'></Badge>
+            <ButtonGroup>
+                <Button
+                    aria-label="reduce"
+                    onClick={() => {
+                        setCount(Math.max(count - 1, initial));
+                    }}
+                >
+                    <RemoveIcon fontSize="small" />
+                </Button>
+                <Button
+                    aria-label="increase"
+                    onClick={handleAdd}
+                    disabled={isDisabled}
+                >
+                    <AddIcon fontSize="small" />
+                </Button>
+                <Button onClick={() => addToCart(count)} disabled={count < 1}>
+                    <Tooltip title="Agregar al carrito">
+                        <AddShoppingCartIcon />
+                    </Tooltip>
+                </Button>
+            </ButtonGroup>
         </Box>
     );
 }

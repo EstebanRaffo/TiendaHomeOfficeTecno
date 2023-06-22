@@ -1,18 +1,19 @@
 import { useState, useContext } from 'react';
-import ItemCount from '../ItemCount/ItemCount';
-import {Card, Typography, Button, CardContent, CardActions, IconButton, Tooltip} from '@mui/material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import "./styles/ItemDetail.css"
-import Carousel from '../Carousel/Carousel';
 import { Link } from "react-router-dom";
 import { cartContext } from '../../context/cartContext';
+import ItemCount from '../ItemCount/ItemCount';
+import Carousel from '../Carousel/Carousel';
+import "./styles/ItemDetail.css"
+import {Card, Typography, Button, CardContent, CardActions, IconButton, Tooltip, Rating} from '@mui/material';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShareIcon from '@mui/icons-material/Share';
 import swal from 'sweetalert'
 
 
 const ItemDetail = ({id, images, category, title, description, price, stock}) => {
     const [quantityInCart, setQuantityInCart] = useState(0)
     const {addItem} = useContext(cartContext)
+    const [rating, setRating] = useState(2)
 
     const addToCart = (count) => {
         if(count > 0){
@@ -40,12 +41,17 @@ const ItemDetail = ({id, images, category, title, description, price, stock}) =>
                 </IconButton>
             </CardActions>
             <Typography variant="h5">{title}</Typography>
-            <Typography variant="h6">{category}</Typography>
-            <Typography paragraph={true}>{description}</Typography>
-            <Typography variant="h5" sx={{color: '#9bd4d1', fontSize: '1.75rem'}}>
-                {`$ ${price}`} 
-            </Typography>
-            <Typography variant="subtitle1" color="text.secondary">
+            <Rating
+                name="simple-controlled"
+                value={rating}
+                onChange={(event, newValue) => {
+                    setRating(newValue);
+                }}
+            />
+            <Typography variant="h6" sx={{color: '#0C47A3'}}>{category}</Typography>
+            <Typography paragraph={true} sx={{margin: '5% 3%'}}>{description}</Typography>
+            <Typography variant="h3" sx={{color: '#9bd4d1'}}>{`$ ${price}`}</Typography>
+            <Typography variant="subtitle1" sx={{margin: '2%', color: '#0F9403'}}>
                 {`${stock - quantityInCart} unidades disponibles`} 
             </Typography>
             <hr></hr>

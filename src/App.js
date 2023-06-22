@@ -1,16 +1,16 @@
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import './App.css';
+import HomePage from './pages/HomePage';
 import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import CartView from './components/CartView/CartView'
-import HomePage from './pages/HomePage';
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import {CartContextProvider} from './context/cartContext'
 import BuyOrder from './components/BuyOrder/BuyOrder'
 import Checkout from './components/Checkout/Checkout';
+import {CartContextProvider} from './context/cartContext'
 
 
-function App() {
+export default function App() {
   return (
     <CartContextProvider>
       <BrowserRouter>
@@ -29,5 +29,3 @@ function App() {
     </CartContextProvider>
   )
 }
-
-export default App

@@ -1,21 +1,19 @@
 import * as React from 'react';
+import { Link } from "react-router-dom";
 import {Card, CardHeader, CardMedia, Typography, Button, IconButton, Tooltip, CardActions} from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
-import { Link } from "react-router-dom";
-
 import './styles/Item.css';
 
 function CardDescription({ price, discount, category }) {
-
   return (
     <div className="item-card_detail">
-      <small>{category}</small>
+      <small style={{color: '#0E4293'}}>{category}</small>
       <br></br>
-      {discount && <small>Descuento: {discount} % </small>}
+      {discount && <small style={{color: '#20930E'}}>Descuento: {discount} % </small>}
       {discount > 20 && <small style={{ color: "green" }}>Ofertón!</small>}
       {discount > 20 && price < 11300 && (
-        <small style={{ color: "red" }}>Super Ofertón!</small>
+        <small style={{ color: "red" }}> Super Ofertón!</small>
       )}
     </div>
   );
