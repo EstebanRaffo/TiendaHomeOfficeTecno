@@ -12,7 +12,7 @@ function CardDescription({ price, discount, category }) {
       <br></br>
       {discount && <small style={{color: '#20930E'}}>Descuento: {discount} % </small>}
       {discount > 20 && <small style={{ color: "green" }}>Ofertón!</small>}
-      {discount > 20 && price < 11300 && (
+      {discount > 20 && price < 26000 && (
         <small style={{ color: "red" }}> Super Ofertón!</small>
       )}
     </div>

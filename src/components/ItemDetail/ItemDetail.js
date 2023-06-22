@@ -25,51 +25,67 @@ const ItemDetail = ({id, images, category, title, description, price, stock}) =>
     }
 
     return (
-    <Card className="ItemDetail">
-        <Carousel images={images}/>
-        <CardContent>
-            <CardActions className="CardActionsUser">
-                <IconButton aria-label="share">
-                    <Tooltip title="Compartir">
-                        <ShareIcon />
-                    </Tooltip>
-                </IconButton>
-                <IconButton aria-label="add to favorites">
-                    <Tooltip title="Agregar a favoritos">
-                        <FavoriteIcon />
-                    </Tooltip>
-                </IconButton>
-            </CardActions>
-            <Typography variant="h5">{title}</Typography>
-            <Rating
-                name="simple-controlled"
-                value={rating}
-                onChange={(event, newValue) => {
-                    setRating(newValue);
-                }}
-            />
-            <Typography variant="h6" sx={{color: '#0C47A3'}}>{category}</Typography>
-            <Typography paragraph={true} sx={{margin: '5% 3%'}}>{description}</Typography>
-            <Typography variant="h3" sx={{color: '#9bd4d1'}}>{`$ ${price}`}</Typography>
-            <Typography variant="subtitle1" sx={{margin: '2%', color: '#0F9403'}}>
-                {`${stock - quantityInCart} unidades disponibles`} 
-            </Typography>
-            <hr></hr>
-            <CardActions className="CardActionsBuy">
-                {quantityInCart > 0 ? 
-                    <>
-                        <Link to='/cart'><Button variant="contained" size='large'>Ir al carrito</Button></Link>
-                    </>    
+        <Card className="ItemDetail">
+            <Carousel images={images}/>
+            <CardContent>
+                <CardActions className="CardActionsUser">
+                    <IconButton aria-label="share">
+                        <Tooltip title="Compartir">
+                            <ShareIcon />
+                        </Tooltip>
+                    </IconButton>
+                    <IconButton aria-label="add to favorites">
+                        <Tooltip title="Agregar a favoritos">
+                            <FavoriteIcon />
+                        </Tooltip>
+                    </IconButton>
+                </CardActions>
+                <Typography variant="h5">{title}</Typography>
+                <Rating
+                    name="simple-controlled"
+                    value={rating}
+                    onChange={(event, newValue) => {
+                        setRating(newValue);
+                    }}
+                />
+                <Typography variant="h6" sx={{color: '#0C47A3'}}>{category}</Typography>
+                <Typography paragraph={true} sx={{margin: '5% 3%'}}>{description}</Typography>
+                <Typography variant="h3" sx={{color: '#9bd4d1'}}>{`$ ${price}`}</Typography>
+                {stock ? 
+                    <Typography variant="subtitle1" sx={{margin: '2%', color: '#0F9403'}}>
+                        {`${stock - quantityInCart} unidades disponibles`} 
+                    </Typography>
                     :
-                    <>
-                        <ItemCount stock={stock} initial={0} addToCart={addToCart}/>
-                        <Button variant="contained" size='large'>Comprar Ahora</Button>
-                    </>
+                    <Typography variant="subtitle1" sx={{margin: '2%', color: '#0F9403'}}>
+                        Producto sin stock
+                    </Typography>
                 }
-            </CardActions>
-        </CardContent>
-    </Card>
-  );
+                <hr></hr>
+                <CardActions className="CardActionsBuy">
+                    {quantityInCart > 0 ? 
+                        <>
+                            <Link to='/cart'><Button variant="contained" size='large'>Ir al carrito</Button></Link>
+                        </>    
+                        :
+                        <>
+                            {stock ?
+                                <>
+                                    <ItemCount stock={stock} initial={0} addToCart={addToCart}/>
+                                    <Button variant="contained" size='large'>Comprar Ahora</Button>
+                                </> 
+                            :
+                                <Link to={`/category/${category}`}>
+                                    <Button variant="contained" size='large' sx={{marginTop: '1%'}}>
+                                        Ver productos similares
+                                    </Button>
+                                </Link>
+                            }
+                        </>
+                    }
+                </CardActions>
+            </CardContent>
+        </Card>
+    );
 };
 
 export default ItemDetail;

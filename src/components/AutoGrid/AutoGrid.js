@@ -32,7 +32,7 @@ export default function AutoGrid(item) {
                 <Grid item xs="auto">
                     <CartItem {...item} />
                 </Grid>
-                <Grid item xs={2}>
+                <Grid item xs={2.1}>
                     <Item>
                         <Button
                             aria-label="reduce"

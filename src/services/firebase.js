@@ -4,6 +4,8 @@ import { getFirestore, collection, addDoc, writeBatch, doc, query, orderBy, getD
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import products from "../data/data";
+import swal from 'sweetalert'
+
 
 // Your web app's Firebase configuration
 // const firebaseConfig = {
@@ -121,7 +123,8 @@ export async function createOrderWithStockUpdate(data) {
 
     const stockToUpdate = stock - itemInCart.count;
     if (stockToUpdate < 0) {
-      throw new Error(`No hay stock suficiente del producto: ${itemInCart.id}`);
+      swal("Encontramos un problema", `No hay stock suficiente del producto: ${itemInCart.title}`, "error")
+      throw new Error(`No hay stock suficiente del producto: ${itemInCart.title}`);
     } else {
       const docRef = doc(db, "products", itemInCart.id);
       batch.update(docRef, { stock: stockToUpdate });

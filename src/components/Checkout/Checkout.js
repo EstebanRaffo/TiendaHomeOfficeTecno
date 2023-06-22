@@ -21,6 +21,7 @@ export default function Checkout() {
     phone: ''
   });
   const [isConfirmationLoading, setIsConfirmationLoading] = useState(false)
+  const isDisabled = !(userData.name !== '' && userData.phone !== '' && userData.email !== '')
 
   const { cart, clearCart, getTotalPrice } = useContext(cartContext)
   const navigateTo = useNavigate()
@@ -73,7 +74,7 @@ export default function Checkout() {
       case 1:
         return <PaymentForm />;
       case 2:
-        return <Review />;
+        return <Review {...userData}/>;
       default:
         throw new Error('Paso Inexistente');
     }
@@ -118,23 +119,26 @@ export default function Checkout() {
                       variant="contained"
                       onClick={handleConfirm}
                       sx={{ mt: 3, ml: 1 }}
-                      disabled={!(
-                        userData.name !== '' &&
-                        userData.phone !== '' &&
-                        userData.email !== ''
-                        )}
+                      disabled={isDisabled}
                     >Confirmar compra</Button>
-                  : 
-                    <Button
-                      variant="contained"
-                      onClick={handleNext}
-                      sx={{ mt: 3, ml: 1 }}
-                      disabled={!(
-                        userData.name !== '' &&
-                        userData.phone !== '' &&
-                        userData.email !== ''
-                        )} 
-                    >Siguiente</Button>
+                  :
+                    activeStep === 0 ? 
+                      <>
+                        <Button onClick={() => navigateTo('/cart')} sx={{ mt: 3, ml: 1 }}>Atrás</Button>
+                        <Button
+                          variant="contained"
+                          onClick={handleNext}
+                          sx={{ mt: 3, ml: 1 }}
+                          disabled={isDisabled} 
+                          >Siguiente</Button>
+                      </>
+                      :
+                      <Button
+                        variant="contained"
+                        onClick={handleNext}
+                        sx={{ mt: 3, ml: 1 }}
+                        disabled={isDisabled} 
+                      >Siguiente</Button>
                   }
                 </Box>
               </Fragment>
