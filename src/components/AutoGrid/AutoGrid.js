@@ -45,7 +45,7 @@ export default function AutoGrid(item) {
                         <Button
                             aria-label="increase"
                             onClick={handleAdd}
-                            disabled={stock < count}
+                            disabled={stock <= count}
                         >
                             <AddIcon fontSize="medium" />
                         </Button>
