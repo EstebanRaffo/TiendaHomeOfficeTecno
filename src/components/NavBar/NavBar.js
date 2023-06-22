@@ -26,7 +26,7 @@ const NavBar = () => {
               <NavDropdown.Item as={Link} to="/category/homeoffice">Kits HomeOffice</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item as={Link} to="/category/homeoffice">
-                Separated link
+                Más productos
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>

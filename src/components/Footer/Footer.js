@@ -22,30 +22,29 @@ export default function Footer() {
         <Grid container spacing={5}>
           <Grid item xs={12} sm={4}>
             <Typography variant="h6" color="text.primary" gutterBottom>
-              About Us
+              Sobre nosotros
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              We are XYZ company, dedicated to providing the best service to our
-              customers.
+                Somos Tienda Tecno&HomeOffice dedicados a proveer los mejores productos para el trabajo IT HomeOffice 
             </Typography>
           </Grid>
           <Grid item xs={12} sm={4}>
             <Typography variant="h6" color="text.primary" gutterBottom>
-              Contact Us
+              Contacto
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              123 Main Street, Anytown, USA
+              Maipú 1500 piso 17, Buenos Aires, Argentina
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Email: info@example.com
+              Email: info@tiendahomeofficetec.com
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Phone: +1 234 567 8901
+              Teléfono: +54 911 1234 5678
             </Typography>
           </Grid>
           <Grid item xs={12} sm={4}>
             <Typography variant="h6" color="text.primary" gutterBottom>
-              Follow Us
+              Síguenos en
             </Typography>
             <Link href="https://www.facebook.com/" color="inherit">
               <Facebook />
@@ -66,7 +65,7 @@ export default function Footer() {
           <Typography variant="body2" color="text.secondary" align="center">
             {"Copyright © "}
             <Link color="inherit" href="https://your-website.com/">
-              Your Website
+              Tu Website
             </Link>{" "}
             {new Date().getFullYear()}
             {"."}

@@ -15,10 +15,8 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function AutoGrid(item) {
-    const { removeItem, cart, updateCountItemCart } = useContext(cartContext)
+    const { removeItem, updateCountItemCart } = useContext(cartContext)
     const {id, count, price, stock} = item
-
-    console.log("cart: ", cart)
 
     function handleSubtract(){
         updateCountItemCart(id, -1)

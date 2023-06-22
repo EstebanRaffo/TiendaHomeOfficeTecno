@@ -19,3 +19,8 @@ hr{
 .CardActionsItem{
     justify-content: center;
 }
+
+
+.item-card_detail{
+    padding: 12px 8px;
+}

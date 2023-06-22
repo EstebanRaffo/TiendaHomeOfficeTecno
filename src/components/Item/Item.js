@@ -6,8 +6,22 @@ import { Link } from "react-router-dom";
 
 import './styles/Item.css';
 
-export default function Item({id, title, image, price}) {
+function CardDescription({ price, discount, category }) {
 
+  return (
+    <div className="item-card_detail">
+      <small>{category}</small>
+      <br></br>
+      {discount && <small>Descuento: {discount} % </small>}
+      {discount > 20 && <small style={{ color: "green" }}>Ofertón!</small>}
+      {discount > 20 && price < 11300 && (
+        <small style={{ color: "red" }}>Super Ofertón!</small>
+      )}
+    </div>
+  );
+}
+
+export default function Item({id, title, image, price, discount, category}) {
   return (
     <Card className='ItemCard'>
       <CardHeader
@@ -32,6 +46,7 @@ export default function Item({id, title, image, price}) {
         alt={title}
       />
       <Typography variant="h6" sx={{paddingLeft: '3%', paddingRight: '3%'}}>{title}</Typography>
+      <CardDescription discount={discount} price={price} category={category} />
       <Typography variant="inherit" sx={{color: '#9bd4d1', fontSize: '1.75rem'}}>{`$ ${price}`}</Typography>
       <CardActions className='CardActionsItem'>
         <Link to={`/product/${id}`}>
