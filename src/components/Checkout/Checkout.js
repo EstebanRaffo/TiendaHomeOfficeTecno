@@ -34,7 +34,7 @@ export default function Checkout() {
   const { cart, clearCart, getTotalPrice } = useContext(cartContext)
   const navigateTo = useNavigate()
 
-  function onInputChange({evt}) {
+  function onInputChange(evt) {
     const field = evt.target.name;
     const value = evt.target.value;
 
@@ -67,14 +67,8 @@ export default function Checkout() {
 
     try{
         const id = await createOrderWithStockUpdate(order)
-        console.log("respuesta: ", id)
         clearCart()
         navigateTo(`/order-confirmation/${id}`)
-        /* 
-        1. alert: SweetAlert/toastify -> muestren el id
-        2. redirección: React Router -> /confirmation
-        3. rendering condicional -> modificando un state
-        */ 
     }catch(error){
         alert(error)
     }finally{ setIsConfirmationLoading(false) }
@@ -108,7 +102,7 @@ export default function Checkout() {
       <CssBaseline />
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         {isConfirmationLoading ? 
-          <LinearProgress/>
+          <LinearProgress sx={{margin: '15% 0'}}/>
           :
           <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
               <Typography component="h1" variant="h4" align="center">

@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { getData, getDataByCategory } from "../../services/firebase"
 import ItemList from "../ItemList/ItemList";
 import { Box, LinearProgress } from '@mui/material';
-// import { exportDataWithBatch } from "../../services/firebase"
 
 
 // eslint-disable-next-line react/prop-types
@@ -43,10 +42,9 @@ const ItemListContainer = () => {
 
     return(
         <div style={styleList}>
-            {/* <button onClick={exportDataWithBatch}>Exportar datos</button> */}
             {isLoading ? 
                 <Box sx={{ width: '100%' }}>
-                    <LinearProgress />
+                    <LinearProgress sx={{margin: '15% 0'}}/>
                 </Box> 
                 : 
                 <ItemList products={products} />}

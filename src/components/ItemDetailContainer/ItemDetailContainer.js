@@ -36,7 +36,7 @@ const ItemDetailContainer = () => {
             <div className='ItemDetailContainer'>
                 {isLoading ? 
                     <Box sx={{ width: '100%' }}>
-                        <LinearProgress />
+                        <LinearProgress sx={{margin: '15% 0'}}/>
                     </Box>  
                     : 
                     <ItemDetail {...product} />}

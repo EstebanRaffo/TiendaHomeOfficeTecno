@@ -7,7 +7,6 @@ import HomePage from './pages/HomePage';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import {CartContextProvider} from './context/cartContext'
 import BuyOrder from './components/BuyOrder/BuyOrder'
-// import Checkout from './components/Checkout/draft/Checkout';
 import Checkout from './components/Checkout/Checkout';
 
 

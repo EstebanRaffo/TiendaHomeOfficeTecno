@@ -2,7 +2,9 @@ import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import ButtonBase from '@mui/material/ButtonBase';
+// import ButtonBase from '@mui/material/ButtonBase';
+import {ButtonBase} from '@mui/material';
+
 
 const Img = styled('img')({
   margin: 'auto',
@@ -35,8 +37,6 @@ export default function CartItem({title, price, images}) {
                         <Typography gutterBottom variant="subtitle1" component="div">
                             {title}
                         </Typography>
-                    </Grid>
-                    <Grid item>
                         <Typography variant="h5" component="div" sx={{color: '#9bd4d1'}}>
                             Precio: $ {price}
                         </Typography>
