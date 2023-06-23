@@ -15,7 +15,7 @@ export const CartContextProvider = ({children}) => {
         if(isInCart(item.id)){  
             let positionInCart = getItemIndex(item.id)
             newCart[positionInCart].count += item.count
-            newCart[positionInCart].stock -= item.count  
+            newCart[positionInCart].stock -= item.count     
         }else{
             newCart.push(item)
         }
@@ -58,7 +58,7 @@ export const CartContextProvider = ({children}) => {
     }
 
     return(
-        <cartContext.Provider value={{cart, addItem, removeItem, getTotalItems, getTotalPrice, clearCart, updateCountItemCart}}>
+        <cartContext.Provider value={{cart, addItem, removeItem, getTotalItems, getTotalPrice, clearCart, updateCountItemCart, isInCart, getItemIndex}}>
             {children}
         </cartContext.Provider>
     )

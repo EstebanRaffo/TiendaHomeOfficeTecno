@@ -12,18 +12,32 @@ import swal from 'sweetalert'
 
 const ItemDetail = ({id, images, category, title, description, price, stock}) => {
     const [quantityInCart, setQuantityInCart] = useState(0)
-    const {addItem} = useContext(cartContext)
+    const {addItem, isInCart, getItemIndex, cart} = useContext(cartContext)
     const [rating, setRating] = useState(2)
     const product_existing = images && category && title && description && price && stock
 
     const addToCart = (count) => {
         if(count > 0){
-            swal("Bien hecho!", `Agregaste ${count} ${count > 1 ? "unidades" : "unidad"} al carrito`, "success")
-            setQuantityInCart(count)
-            const item = {id, images, category, title, description, price, stock, count}
-            addItem(item)
+            if(isInCart(id)){
+                let previous_count = cart[getItemIndex(id)].count
+                let new_count = previous_count + count
+                if(new_count <= stock){
+                    updateInCart(count)
+                }else{
+                    swal("No es posible agregar al carrito", `No hay stock suficiente del producto: ${title}`, "error")
+                }
+            }else{
+                updateInCart(count)
+            }
         }
     }
+
+    const updateInCart = (count) => {
+        swal("Bien hecho!", `Agregaste ${count} ${count > 1 ? "unidades" : "unidad"} al carrito`, "success")
+        setQuantityInCart(count)
+        const item = {id, images, category, title, description, price, stock, count}
+        addItem(item)
+    }    
 
     if(!product_existing){
         return(
