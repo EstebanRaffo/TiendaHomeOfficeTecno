@@ -4,7 +4,7 @@ import { cartContext } from '../../context/cartContext';
 import ItemCount from '../ItemCount/ItemCount';
 import Carousel from '../Carousel/Carousel';
 import "./styles/ItemDetail.css"
-import {Card, Typography, Button, CardContent, CardActions, IconButton, Tooltip, Rating} from '@mui/material';
+import {Card, Typography, Button, CardContent, CardActions, IconButton, Tooltip, Rating, Box} from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import swal from 'sweetalert'
@@ -14,6 +14,7 @@ const ItemDetail = ({id, images, category, title, description, price, stock}) =>
     const [quantityInCart, setQuantityInCart] = useState(0)
     const {addItem} = useContext(cartContext)
     const [rating, setRating] = useState(2)
+    const product_existing = images && category && title && description && price && stock
 
     const addToCart = (count) => {
         if(count > 0){
@@ -22,6 +23,15 @@ const ItemDetail = ({id, images, category, title, description, price, stock}) =>
             const item = {id, images, category, title, description, price, stock, count}
             addItem(item)
         }
+    }
+
+    if(!product_existing){
+        return(
+            <Box sx={{ width: '100%', padding: '1%', textAlign: 'center', margin: '10% 0' }}>
+                <h1 style={{marginBottom: '1.5%'}}>No se encontró el Producto</h1>
+                <Link to='/'><Button variant="contained" size='large' sx={{marginTop: '1%'}}>Ir al catálogo</Button></Link>
+            </Box>
+        )
     }
 
     return (
