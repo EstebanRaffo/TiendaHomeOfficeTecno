@@ -8,22 +8,13 @@ import swal from 'sweetalert'
 
 
 // Your web app's Firebase configuration
-// const firebaseConfig = {
-//   apiKey: process.env.REACT_APP_apiKey,
-//   authDomain: process.env.REACT_APP_authDomain,
-//   projectId: process.env.REACT_APP_projectId,
-//   storageBucket: process.env.REACT_APP_storageBucket,
-//   messagingSenderId: process.env.REACT_APP_messagingSenderId,
-//   appId: process.env.REACT_APP_appId
-// };
-
 const firebaseConfig = {
-  apiKey: "AIzaSyA4oMrRB8ah7Un3xKMYXXXHO_PW-pDrF4E",
-  authDomain: "tienda-tecnohomehoffice.firebaseapp.com",
-  projectId: "tienda-tecnohomehoffice",
-  storageBucket: "tienda-tecnohomehoffice.appspot.com",
-  messagingSenderId: "1005442903147",
-  appId: "1:1005442903147:web:a833525185b779ffe0d52e"
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId
 };
 
 // Initialize Firebase
