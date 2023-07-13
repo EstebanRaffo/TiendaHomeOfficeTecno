@@ -29,18 +29,16 @@ const ItemDetailContainer = () => {
             </div>
         );
 
-    if(product){
-        return (
-            <div className='ItemDetailContainer'>
-                {isLoading ? 
-                    <Box sx={{ width: '100%' }}>
-                        <LinearProgress sx={{margin: '15% 0'}}/>
-                    </Box>  
-                    : 
-                    <ItemDetail {...product} />}
-            </div>
-        )
-    }
+    return (
+        <div className='ItemDetailContainer'>
+            {isLoading ? 
+                <Box sx={{ width: '100%' }}>
+                    <LinearProgress sx={{margin: '15% 0'}}/>
+                </Box>  
+                : 
+                <ItemDetail {...product} />}
+        </div>
+    )
 }
 
 export default ItemDetailContainer
